@@ -16920,9 +16920,9 @@ function urlParam(p, forceArray) {
   return result[0];
 }
 
-function stripTrailingSlash(var str) {
-    if(str.substring(-1) === '/') {
-        return str.substring(0, str.length - 1);
+function stripTrailingSlash(str) {
+    if(str.substr(-1) === '/') {
+        return str.substr(0, str.length - 1);
     }
     return str;
 }
