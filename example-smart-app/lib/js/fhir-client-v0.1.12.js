@@ -1554,7 +1554,7 @@ function hexWrite (buf, string, offset, length) {
     length = strLen / 2
   }
   for (var i = 0; i < length; i++) {
-    var byte = parseInt(string.substr(i * 2, 2), 16)
+    var byte = parseInt(string.substring(i * 2, 2), 16)
     assert(!isNaN(byte), 'Invalid hex string')
     buf[offset + i] = byte
   }
@@ -2399,7 +2399,7 @@ function utf8ToBytes (str) {
     } else {
       var start = i
       if (b >= 0xD800 && b <= 0xDFFF) i++
-      var h = encodeURIComponent(str.slice(start, i+1)).substr(1).split('%')
+      var h = encodeURIComponent(str.slice(start, i+1)).substring(1).split('%')
       for (var j = 0; j < h.length; j++) {
         byteArray.push(parseInt(h[j], 16))
       }
@@ -6823,7 +6823,7 @@ function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
         if (array) {
           str = str.split('\n').map(function(line) {
             return '  ' + line;
-          }).join('\n').substr(2);
+          }).join('\n').substring(2);
         } else {
           str = '\n' + str.split('\n').map(function(line) {
             return '   ' + line;
@@ -6840,7 +6840,7 @@ function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
     }
     name = JSON.stringify('' + key);
     if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
-      name = name.substr(1, name.length - 2);
+      name = name.substring(1, name.length - 2);
       name = ctx.stylize(name, 'name');
     } else {
       name = name.replace(/'/g, "\\'")
@@ -16899,7 +16899,7 @@ function urlParam(p, forceArray) {
     forceArray = false;
   }
 
-  var query = location.search.substr(1);
+  var query = location.search.substring(1);
   var data = query.split("&");
   var result = [];
 
@@ -16921,8 +16921,8 @@ function urlParam(p, forceArray) {
 }
 
 function stripTrailingSlash(str) {
-    if(str.substr(-1) === '/') {
-        return str.substr(0, str.length - 1);
+    if(str.substring(-1) === '/') {
+        return str.substring(0, str.length - 1);
     }
     return str;
 }
@@ -17573,7 +17573,7 @@ function FhirClient(p) {
       if (path.match(/^urn/)) return path;
 
       // strip leading slash
-      if (path.charAt(0) == "/") path = path.substr(1);
+      if (path.charAt(0) == "/") path = path.substring(1);
 
       return server.serviceUrl + '/' + path;
     }
