@@ -16919,13 +16919,24 @@ function urlParam(p, forceArray) {
   }
   return result[0];
 }
-
+/**
 function stripTrailingSlash(str){
 	if(str.substr(-1) === '/') {
         return str.substr(0, str.length - 1);
     }
     return str;
 }
+*/
+function stripTrailingSlash(str) {
+    if (typeof str !== 'string') {
+        return '';
+    }
+    if (str.slice(-1) === '/') {
+        return str.slice(0, -1);
+    }
+    return str;
+}
+	
 
 /**
 * Get the previous token stored in sessionStorage
